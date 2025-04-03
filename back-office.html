@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" href="./styles/back-office.css" />
+        <title>Marketplace - Compito di fine modulo</title>
+    </head>
+    <body class="d-flex flex-column vh-100">
+        <!-- NAVBAR -->
+        <nav class="container py-2">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <img
+                        src="./assets/logo.png"
+                        alt="Marketplace logo"
+                        class="img-fluid rounded shadow"
+                        width="100" />
+                </div>
+                <ul
+                    class="col-4 list-unstyled d-flex justify-content-center gap-3 mb-0">
+                    <li>
+                        <a class="text-decoration-none" href="./index.html"
+                            >Go back to Shop...</a
+                        >
+                    </li>
+                </ul>
+                <div class="col-4 fs-4 text-end">
+                    <i class="bi bi-search"></i>
+                    <i class="bi bi-person-circle mx-3"></i>
+                    <i class="bi bi-bag"></i>
+                </div>
+            </div>
+        </nav>
+        <!-- JUMBOTRON -->
+        <div class="jumbotron p-5 mb-4">
+            <div class="container-fluid text-center py-5">
+                <h1 class="display-1 fw-bold text-white">Back Office</h1>
+            </div>
+        </div>
+        <!-- MAIN CONTENT -->
+        <main class="container py-5">
+            <div class="row text-center justify-content-center gy-3">
+                <div class="col-12">
+                    <h2>Add new product</h2>
+                </div>
+                <div class="col-6">
+                    <form
+                        class="d-flex flex-column gap-3 bg-info p-3 rounded shadow">
+                        <input
+                            name="brand"
+                            class="form-control"
+                            type="text"
+                            placeholder="Brand..." />
+                        <input
+                            name="productName"
+                            class="form-control"
+                            type="text"
+                            placeholder="Name..." />
+                        <input
+                            name="imageUrl"
+                            class="form-control"
+                            type="text"
+                            placeholder="Image URL..." />
+                        <input
+                            name="description"
+                            class="form-control"
+                            type="text"
+                            placeholder="Description..." />
+                        <input
+                            name="price"
+                            class="form-control"
+                            type="number"
+                            placeholder="Price..." />
+                        <button
+                            type="submit"
+                            class="btn btn-dark rounded-circle align-self-end">
+                            <i class="bi bi-plus-lg fs-5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"
+            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="./scripts/main.js"></script>
+        <script src="./scripts/back-office.js"></script>
+    </body>
+</html>
