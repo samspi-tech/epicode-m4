@@ -43,7 +43,7 @@ const generateCardCover = data => {
     image.alt = productName;
 
     const button = document.createElement('button');
-    button.setAttribute('class', 'btn card-btn');
+    button.setAttribute('class', 'card-btn');
     button.innerText = 'Add to cart';
 
     cardCoverContainer.append(image, button);
@@ -59,14 +59,14 @@ const generateCardBody = data => {
     } = data;
 
     const cardBodyContainer = document.createElement('div');
-    cardBodyContainer.setAttribute('class', 'card-body');
+    cardBodyContainer.setAttribute('class', 'card-body p-2');
 
-    const brand = document.createElement('h6');
-    brand.setAttribute('class', 'card-brand');
+    const brand = document.createElement('small');
+    brand.setAttribute('class', 'card-brand text-secondary');
     brand.innerText = productBrand;
 
-    const title = document.createElement('h5');
-    title.setAttribute('class', 'card-title');
+    const title = document.createElement('h4');
+    title.setAttribute('class', 'card-title my-1');
     title.innerText = productName;
 
     const description = document.createElement('p');
@@ -75,7 +75,7 @@ const generateCardBody = data => {
 
     const price = document.createElement('p');
     price.setAttribute('class', 'card-price');
-    price.innerText = productPrice;
+    price.innerText = `${productPrice} €`;
 
     cardBodyContainer.append(brand, title, description, price);
     return cardBodyContainer;
