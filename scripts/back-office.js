@@ -40,7 +40,8 @@ addProductForm.addEventListener('submit', async event => {
     event.preventDefault();
     const payload = getFormValues();
 
-    await addNewProduct(payload).then(product => console.log(product));
+    await addNewProduct(payload);
+    window.location.reload();
 });
 
 // PRODUCTS LIST
@@ -58,17 +59,39 @@ const getProducts = async () => {
     }
 };
 
+const deleteProduct = async productID => {
+    try {
+        await fetch(`${PRODUCTS_API}/${productID}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${ACCESS_TOKEN}`,
+            },
+        });
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 const generateTableRow = data => {
-    const { brand, name, imageUrl, description, price } = data;
+    const { _id, brand, name, imageUrl, description, price } = data;
     const tr = document.createElement('tr');
 
     [brand, name, imageUrl, description, price].forEach(item => {
         const td = document.createElement('td');
-        td.setAttribute('class', 'table-body-cell');
         td.textContent = item;
 
         tr.appendChild(td);
     });
+
+    const deleteButton = document.createElement('td');
+    deleteButton.innerHTML = '<i class="bi bi-trash3 delete-btn"></i>';
+    deleteButton.addEventListener('click', async () => {
+        await deleteProduct(_id);
+        window.location.reload();
+    });
+
+    tr.appendChild(deleteButton);
     tableBody.appendChild(tr);
 };
 

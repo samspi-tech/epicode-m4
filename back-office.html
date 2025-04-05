@@ -25,27 +25,35 @@
         <title>Marketplace - Compito di fine modulo</title>
     </head>
     <body class="d-flex flex-column vh-100">
+        <div class="container-fluid bg-info py-1">
+            <div class="row">
+                <div class="col">
+                    <p class="text-center mb-0">
+                        You are currently logged in as
+                        <span class="user-role">Shop Manager</span>.
+                    </p>
+                </div>
+            </div>
+        </div>
         <!-- NAVBAR -->
         <nav class="container py-2">
             <div class="row align-items-center">
-                <div class="col-4">
+                <ul class="col-4 list-unstyled d-flex gap-4 mb-0">
+                    <li>
+                        <a class="text-decoration-none" href="./index.html"
+                            >SHOP</a
+                        >
+                    </li>
+                </ul>
+                <div class="col-4 text-center">
                     <img
                         src="./assets/logo.png"
                         alt="Marketplace logo"
                         class="img-fluid rounded shadow"
                         width="100" />
                 </div>
-                <ul
-                    class="col-4 list-unstyled d-flex justify-content-center gap-3 mb-0">
-                    <li>
-                        <a class="text-decoration-none" href="./index.html"
-                            >Go back to Shop...</a
-                        >
-                    </li>
-                </ul>
-                <div class="col-4 fs-4 text-end">
+                <div class="col-4 d-flex justify-content-end gap-4 fs-5">
                     <i class="bi bi-search"></i>
-                    <i class="bi bi-person-circle mx-3"></i>
                     <i class="bi bi-bag"></i>
                 </div>
             </div>
@@ -106,8 +114,8 @@
                         List of products already available for sale
                     </h4>
                 </div>
-                <div class="col-10">
-                    <table class="table">
+                <div class="col-10 table-responsive">
+                    <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">Brand</th>
@@ -115,16 +123,11 @@
                                 <th scope="col">Image URL</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Price</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody id="tableBody">
-                            <!-- <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr> -->
-                        </tbody>
+                        <tbody id="tableBody"></tbody>
                     </table>
                 </div>
             </section>
