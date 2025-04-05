@@ -6,6 +6,13 @@ const ACCESS_TOKEN =
 
 const tableBody = document.getElementById('tableBody');
 const addProductForm = document.getElementById('addProductForm');
+const editProductModal = document.getElementById('editProductModal');
+const closeModalButton = document.getElementById('closeModalButton');
+
+const showModal = () => editProductModal.showModal();
+const closeModal = () => editProductModal.close();
+
+closeModalButton.addEventListener('click', closeModal);
 
 // FORM: ADD NEW PRODUCT
 const addNewProduct = async payload => {
@@ -32,16 +39,12 @@ const getFormValues = () => {
         description: addProductForm.description.value,
         price: Number(addProductForm.price.value),
     };
-
     return payload;
 };
 
-addProductForm.addEventListener('submit', async event => {
-    event.preventDefault();
+addProductForm.addEventListener('submit', async () => {
     const payload = getFormValues();
-
     await addNewProduct(payload);
-    window.location.reload();
 });
 
 // PRODUCTS LIST
@@ -59,15 +62,32 @@ const getProducts = async () => {
     }
 };
 
+const editProduct = async (productID, payload) => {
+    try {
+        const response = await fetch(`${PRODUCTS_API}/${productID}`, {
+            method: 'PUT',
+            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${ACCESS_TOKEN}`,
+            },
+        });
+        return await response.json();
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 const deleteProduct = async productID => {
     try {
-        await fetch(`${PRODUCTS_API}/${productID}`, {
+        const response = await fetch(`${PRODUCTS_API}/${productID}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${ACCESS_TOKEN}`,
             },
         });
+        return await response.json();
     } catch (error) {
         console.error(error);
     }
@@ -84,6 +104,10 @@ const generateTableRow = data => {
         tr.appendChild(td);
     });
 
+    const editButton = document.createElement('td');
+    editButton.innerHTML = '<i class="bi bi-pen edit-btn"></i>';
+    editButton.addEventListener('click', showModal);
+
     const deleteButton = document.createElement('td');
     deleteButton.innerHTML = '<i class="bi bi-trash3 delete-btn"></i>';
     deleteButton.addEventListener('click', async () => {
@@ -91,7 +115,7 @@ const generateTableRow = data => {
         window.location.reload();
     });
 
-    tr.appendChild(deleteButton);
+    tr.append(editButton, deleteButton);
     tableBody.appendChild(tr);
 };
 

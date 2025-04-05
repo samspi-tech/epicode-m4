@@ -47,6 +47,12 @@ main {
     letter-spacing: 1px;
     text-transform: uppercase;
     background-color: #000;
+
+    transition: all 100ms linear;
+}
+
+.form-btn:hover {
+    background-color: #343a40;
 }
 
 /* TABLE */
@@ -71,17 +77,51 @@ td:nth-of-type(7) {
     text-align: center;
 }
 
+.edit-btn,
 .delete-btn {
-    color: #fff;
     font-size: 22px;
     cursor: pointer;
     padding: 8px 10px;
     border-radius: 3px;
-    background-color: #f03e3e;
 
     transition: all 100ms linear;
 }
 
+.edit-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #495057;
+}
+
+.edit-btn:hover {
+    background-color: #dee2e6;
+}
+
+.delete-btn {
+    color: #fff;
+    background-color: #f03e3e;
+}
+
 .delete-btn:hover {
     background-color: #c92a2a;
+}
+
+/* MODAL EDIT PRODUCT */
+#editProductModal::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#editProductModal {
+    border: none;
+    width: 500px;
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
+
+#closeModalButton {
+    position: absolute;
+    right: 10px;
+    top: 0;
+
+    cursor: pointer;
+    font-size: 26px;
 }

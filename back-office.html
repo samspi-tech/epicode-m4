@@ -111,7 +111,7 @@
             <section class="row flex-column align-items-center">
                 <div class="col-10">
                     <h4 class="section-title bg-white mb-0 py-3 ps-2">
-                        List of products already available for sale
+                        List of products already available in the shop
                     </h4>
                 </div>
                 <div class="col-10 table-responsive">
@@ -123,14 +123,58 @@
                                 <th scope="col">Image URL</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Price</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
+                                <th scope="col" class="text-center">Edit</th>
+                                <th scope="col" class="text-center">Delete</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody"></tbody>
                     </table>
                 </div>
             </section>
+            <!-- MODAL -->
+            <dialog id="editProductModal" class="position-relative">
+                <i id="closeModalButton" class="bi bi-x"></i>
+                <div class="row gy-2">
+                    <div class="col-12 bg-white">
+                        <h5 class="section-title text-center">Edit product</h5>
+                    </div>
+                    <div class="col-12 bg-white">
+                        <!-- FORM: EDIT PRODUCT -->
+                        <form
+                            id="editProductForm"
+                            class="d-flex flex-column gap-3">
+                            <input
+                                name="brand"
+                                class="form-control"
+                                type="text"
+                                placeholder="Product Brand" />
+                            <input
+                                name="productName"
+                                class="form-control"
+                                type="text"
+                                placeholder="Product Name" />
+                            <input
+                                name="imageUrl"
+                                class="form-control"
+                                type="text"
+                                placeholder="Product Image (URL)" />
+                            <input
+                                name="description"
+                                class="form-control"
+                                type="text"
+                                placeholder="Product Description" />
+                            <input
+                                name="price"
+                                class="form-control"
+                                type="number"
+                                placeholder="Product Price" />
+                            <button type="submit" class="form-btn">
+                                Save changes
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </main>
 
         <script
