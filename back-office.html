@@ -16,8 +16,10 @@
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wdth,wght@0,18..144,87..112,300..900;1,18..144,87..112,300..900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
             rel="stylesheet" />
         <link rel="stylesheet" href="./styles/back-office.css" />
         <title>Marketplace - Compito di fine modulo</title>
@@ -49,53 +51,83 @@
             </div>
         </nav>
         <!-- JUMBOTRON -->
-        <div class="jumbotron p-5 mb-4">
+        <div class="jumbotron p-5">
             <div class="container-fluid text-center py-5">
                 <h1 class="display-1 fw-bold text-white">Back Office</h1>
             </div>
         </div>
         <!-- MAIN CONTENT -->
-        <main class="container py-5">
-            <div class="row text-center justify-content-center gy-3">
-                <div class="col-12">
-                    <h2>Add new product</h2>
+        <main class="container-fluid d-flex flex-column gap-5 py-5">
+            <!-- FORM: ADD PRODUCT -->
+            <section class="row flex-column align-items-center">
+                <div class="col-6 bg-white pt-3 px-4">
+                    <h4 class="section-title mb-0">
+                        Add new product to the shop
+                    </h4>
+                    <p>Every field is required</p>
                 </div>
-                <div class="col-6">
-                    <form
-                        class="d-flex flex-column gap-3 bg-info p-3 rounded shadow">
+                <div class="col-6 bg-white pb-3 px-4">
+                    <form id="addProductForm" class="d-flex flex-column gap-3">
                         <input
                             name="brand"
                             class="form-control"
                             type="text"
-                            placeholder="Brand..." />
+                            placeholder="Product Brand" />
                         <input
                             name="productName"
                             class="form-control"
                             type="text"
-                            placeholder="Name..." />
+                            placeholder="Product Name" />
                         <input
                             name="imageUrl"
                             class="form-control"
                             type="text"
-                            placeholder="Image URL..." />
+                            placeholder="Product Image (URL)" />
                         <input
                             name="description"
                             class="form-control"
                             type="text"
-                            placeholder="Description..." />
+                            placeholder="Product Description" />
                         <input
                             name="price"
                             class="form-control"
                             type="number"
-                            placeholder="Price..." />
-                        <button
-                            type="submit"
-                            class="btn btn-dark rounded-circle align-self-end">
-                            <i class="bi bi-plus-lg fs-5"></i>
+                            placeholder="Product Price" />
+                        <button type="submit" class="form-btn align-self-start">
+                            Add product
                         </button>
                     </form>
                 </div>
-            </div>
+            </section>
+            <!-- PRODUCTS TABLE -->
+            <section class="row flex-column align-items-center">
+                <div class="col-10">
+                    <h4 class="section-title bg-white mb-0 py-3 ps-2">
+                        List of products already available for sale
+                    </h4>
+                </div>
+                <div class="col-10">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Brand</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Image URL</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </main>
 
         <script
@@ -105,7 +137,6 @@
             integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
             crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="./scripts/main.js"></script>
         <script src="./scripts/back-office.js"></script>
     </body>
 </html>
