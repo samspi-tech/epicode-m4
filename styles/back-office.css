@@ -1,5 +1,6 @@
 body {
     color: #222222;
+    background-color: #e7f5ff;
     font-family: 'Lato', sans-serif;
 }
 
@@ -29,10 +30,6 @@ h1 {
 }
 
 /* MAIN CONTENT */
-main {
-    background-color: #e7f5ff;
-}
-
 .section-title {
     font-weight: 600;
     letter-spacing: -0.5px;
@@ -140,6 +137,9 @@ td:nth-of-type(7) {
 
 #editProductForm label {
     font-weight: 600;
+    padding-left: 5px;
+    margin-bottom: 3px;
+    border-left: 3px solid #495057;
 }
 
 #productID {

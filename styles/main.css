@@ -1,3 +1,8 @@
+html,
+body {
+    overflow-x: hidden;
+}
+
 body {
     color: #222222;
     font-family: 'Lato', sans-serif;
@@ -128,9 +133,31 @@ h1,
 }
 
 /* FOOTER */
+.list-title {
+    color: #fff;
+    font-size: 21.5px;
+    font-family: 'DM Serif Display', sans-serif;
+}
+
+.list-subtitle {
+    font-weight: 600;
+}
+
+.list-subtitle,
+.list-subtitle ~ ul > li,
 footer a {
     color: #fff;
-    font-weight: 700;
+    font-size: 17px;
+}
+
+footer a {
+    font-weight: 900;
     text-decoration: none;
-    text-transform: uppercase;
+    letter-spacing: 0.1px;
+
+    transition: color 100ms linear;
+}
+
+footer a:hover {
+    color: #ffc078;
 }

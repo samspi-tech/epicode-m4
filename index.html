@@ -24,7 +24,7 @@
         <title>Marketplace - Compito di fine modulo</title>
     </head>
     <body class="d-flex flex-column vh-100">
-        <div class="container-fluid bg-warning py-1">
+        <div class="container-fluid bg-warning py-1 sticky-top shadow-sm">
             <div class="row">
                 <div class="col">
                     <p class="text-center mb-0">
@@ -113,24 +113,44 @@
         <!-- FOOTER -->
         <footer class="container-fluid p-5 bg-secondary mt-auto">
             <div class="container">
-                <div class="row">
-                    <div class="col-4">
+                <div class="row gy-5">
+                    <div class="d-none d-md-block col-md-3">
                         <img
                             src="./assets/logo.png"
                             alt="Marketplace logo"
                             class="img-fluid rounded shadow"
                             width="300" />
                     </div>
-                    <ul class="col-4 list-unstyled d-flex flex-column gap-3">
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Return</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">Information</a></li>
-                        <li><a href="#">Gift Vouchers</a></li>
-                    </ul>
-                    <form class="col-4 text-white">
-                        <h6 class="text-uppercase">
+                    <div
+                        class="col-12 col-md-5 d-flex justify-content-around gap-5">
+                        <ul class="list-unstyled d-flex flex-column gap-2">
+                            <li class="list-title">Information</li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Return</a></li>
+                            <li><a href="#">Contacts</a></li>
+                            <li><a href="#">Information</a></li>
+                            <li><a href="#">Gift Vouchers</a></li>
+                        </ul>
+                        <ul class="list-unstyled d-flex flex-column">
+                            <li class="list-title">Customer service</li>
+                            <li class="list-subtitle mt-2">Infoline:</li>
+                            <ul class="list-unstyled mb-3">
+                                <li>+39 123 456 789</li>
+                                <li>Mon.-Fri.: 10:00-17:00</li>
+                            </ul>
+                            <li class="list-subtitle mt-2">E-mail address:</li>
+                            <ul class="list-unstyled mb-3">
+                                <li>marketplace@marketplace.com</li>
+                            </ul>
+                            <li class="list-subtitle mt-2">Location:</li>
+                            <ul class="list-unstyled mb-3">
+                                <li>Planet Earth</li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <form class="col-12 col-md-4 text-white">
+                        <h6 class="list-title mt-1 mb-0">
                             Subscribe to our newsletter
                         </h6>
                         <p>Be first in line when we release new products.</p>

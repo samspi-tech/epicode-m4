@@ -25,7 +25,7 @@
         <title>Marketplace - Compito di fine modulo</title>
     </head>
     <body class="d-flex flex-column vh-100">
-        <div class="container-fluid bg-info py-1">
+        <div class="container-fluid bg-info py-1 sticky-top shadow-sm">
             <div class="row">
                 <div class="col">
                     <p class="text-center mb-0">
@@ -65,7 +65,7 @@
             </div>
         </div>
         <!-- MAIN CONTENT -->
-        <main class="container-fluid d-flex flex-column gap-5 py-5">
+        <main class="container d-flex flex-column gap-5 py-5">
             <!-- FORM: ADD PRODUCT -->
             <section class="row flex-column align-items-center">
                 <div class="col-6 bg-white pt-3 px-4">
@@ -109,12 +109,12 @@
             </section>
             <!-- PRODUCTS TABLE -->
             <section class="row flex-column align-items-center">
-                <div class="col-10">
-                    <h4 class="section-title bg-white mb-0 py-3 ps-2">
+                <div class="col-12 bg-white">
+                    <h4 class="section-title mb-0 py-3">
                         List of products already available in the shop
                     </h4>
                 </div>
-                <div class="col-10 table-responsive">
+                <div class="col-12 table-responsive bg-white">
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -178,6 +178,24 @@
                 </div>
             </dialog>
         </main>
+        <!-- FOOTER -->
+        <footer class="container-fluid p-5 bg-secondary mt-auto">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <form class="col-6">
+                        <h4 class="text-white">
+                            Having problems? Contact support.
+                        </h4>
+                        <textarea
+                            class="form-control mb-2"
+                            placeholder="Issue details..."></textarea>
+                        <button type="submit" class="btn btn-warning">
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </footer>
 
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
