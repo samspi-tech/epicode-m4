@@ -2,6 +2,13 @@ body {
     color: #222222;
     font-family: 'Lato', sans-serif;
 }
+
+.user-role {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
 /* NAVBAR */
 nav a {
     color: #776c65;
@@ -54,14 +61,25 @@ h1,
 }
 
 /* PRODUCT CARD */
-.card,
+.card img {
+    cursor: pointer;
+    border-radius: 3px;
+}
+
 .card-body {
     cursor: pointer;
-    max-width: 300px;
 }
 
 .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     position: relative;
+
+    height: 500px;
+    padding: 20px;
+    background-color: #ffe8cc;
 }
 
 .card-btn {

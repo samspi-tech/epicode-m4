@@ -35,7 +35,7 @@ const generateCardCover = data => {
     const { name: productName, imageUrl: productImage } = data;
 
     const cardCoverContainer = document.createElement('div');
-    cardCoverContainer.setAttribute('class', 'card');
+    cardCoverContainer.setAttribute('class', 'card border-0');
 
     const image = document.createElement('img');
     image.setAttribute('class', 'img-fluid');
