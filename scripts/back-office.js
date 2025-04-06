@@ -4,14 +4,24 @@ const PRODUCTS_API = 'https://striveschool-api.herokuapp.com/api/product/';
 const ACCESS_TOKEN =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2RmYzUzNmQyZWM1YzAwMTUzOTM4MGUiLCJpYXQiOjE3NDM2MTQ2MTYsImV4cCI6MTc0NDgyNDIxNn0.7n77yIzfN7AcDP7EsmembYT-UEcqHExS9W084_8ZYaw';
 
-const addProductForm = document.getElementById('addProductForm');
-
-const tableBody = document.getElementById('tableBody');
 const productID = document.getElementById('productID');
+const addProductForm = document.getElementById('addProductForm');
 const editProductForm = document.getElementById('editProductForm');
 const closeModalButton = document.getElementById('closeModalButton');
 const editProductModal = document.getElementById('editProductModal');
 
+const alertContainer = document.getElementById('alertContainer');
+const spinnerContainer = document.getElementById('spinnerContainer');
+const tableBodyContainer = document.getElementById('tableBodyContainer');
+
+const toggleSpinner = () => spinnerContainer.classList.toggle('d-none');
+
+const showAlertMessage = message => {
+    alertContainer.innerHTML = message;
+    alertContainer.classList.remove('d-none');
+};
+
+// TODO Refactor this mess
 const showModal = id => {
     editProductModal.showModal();
 
@@ -79,6 +89,7 @@ addProductForm.addEventListener('submit', async event => {
 
 // PRODUCTS LIST
 const getProducts = async () => {
+    toggleSpinner();
     try {
         const response = await fetch(PRODUCTS_API, {
             headers: {
@@ -89,6 +100,8 @@ const getProducts = async () => {
         return await response.json();
     } catch (error) {
         console.error(error);
+    } finally {
+        toggleSpinner();
     }
 };
 
@@ -158,9 +171,9 @@ const generateTableRow = data => {
     });
 
     tr.append(editButton, deleteButton);
-    tableBody.appendChild(tr);
+    tableBodyContainer.appendChild(tr);
 };
 
-getProducts().then(products =>
-    products.forEach(product => generateTableRow(product))
-);
+getProducts()
+    .then(products => products.forEach(product => generateTableRow(product)))
+    .catch(err => showAlertMessage('Something went wrong.'));
