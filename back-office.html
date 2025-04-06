@@ -75,14 +75,14 @@
                     <p>Every field is required</p>
                 </div>
                 <div class="col-6 bg-white pb-3 px-4">
-                    <form id="addProductForm" class="d-flex flex-column gap-3">
+                    <form id="addProductForm" class="d-flex flex-wrap gap-3">
                         <input
                             name="brand"
                             class="form-control"
                             type="text"
                             placeholder="Product Brand" />
                         <input
-                            name="productName"
+                            name="name"
                             class="form-control"
                             type="text"
                             placeholder="Product Name" />
@@ -91,15 +91,15 @@
                             class="form-control"
                             type="text"
                             placeholder="Product Image (URL)" />
-                        <input
+                        <textarea
                             name="description"
                             class="form-control"
-                            type="text"
-                            placeholder="Product Description" />
+                            placeholder="Product Description"></textarea>
                         <input
                             name="price"
                             class="form-control"
                             type="number"
+                            step=".01"
                             placeholder="Product Price" />
                         <button type="submit" class="form-btn align-self-start">
                             Add product
@@ -134,40 +134,42 @@
             <!-- MODAL -->
             <dialog id="editProductModal" class="position-relative">
                 <i id="closeModalButton" class="bi bi-x"></i>
-                <div class="row gy-2">
+                <div class="row gy-3">
                     <div class="col-12 bg-white">
-                        <h5 class="section-title text-center">Edit product</h5>
+                        <h3 class="section-title mb-0">Edit product</h3>
+                        <small>
+                            Product ID:
+                            <span id="productID"></span>
+                        </small>
                     </div>
                     <div class="col-12 bg-white">
                         <!-- FORM: EDIT PRODUCT -->
-                        <form
-                            id="editProductForm"
-                            class="d-flex flex-column gap-3">
+                        <form id="editProductForm" class="d-flex flex-column">
+                            <label>Product Brand</label>
                             <input
                                 name="brand"
-                                class="form-control"
-                                type="text"
-                                placeholder="Product Brand" />
+                                class="form-control mb-3"
+                                type="text" />
+                            <label>Product Name</label>
                             <input
-                                name="productName"
-                                class="form-control"
-                                type="text"
-                                placeholder="Product Name" />
+                                name="name"
+                                class="form-control mb-3"
+                                type="text" />
+                            <label>Product Image (URL)</label>
                             <input
                                 name="imageUrl"
-                                class="form-control"
-                                type="text"
-                                placeholder="Product Image (URL)" />
-                            <input
+                                class="form-control mb-3"
+                                type="text" />
+                            <label>Product Description</label>
+                            <textarea
                                 name="description"
-                                class="form-control"
-                                type="text"
-                                placeholder="Product Description" />
+                                class="form-control mb-3"></textarea>
+                            <label>Product Price</label>
                             <input
                                 name="price"
-                                class="form-control"
+                                class="form-control mb-3"
                                 type="number"
-                                placeholder="Product Price" />
+                                step=".01" />
                             <button type="submit" class="form-btn">
                                 Save changes
                             </button>

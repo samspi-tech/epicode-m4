@@ -4,12 +4,38 @@ const PRODUCTS_API = 'https://striveschool-api.herokuapp.com/api/product/';
 const ACCESS_TOKEN =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2RmYzUzNmQyZWM1YzAwMTUzOTM4MGUiLCJpYXQiOjE3NDM2MTQ2MTYsImV4cCI6MTc0NDgyNDIxNn0.7n77yIzfN7AcDP7EsmembYT-UEcqHExS9W084_8ZYaw';
 
-const tableBody = document.getElementById('tableBody');
 const addProductForm = document.getElementById('addProductForm');
-const editProductModal = document.getElementById('editProductModal');
-const closeModalButton = document.getElementById('closeModalButton');
 
-const showModal = () => editProductModal.showModal();
+const tableBody = document.getElementById('tableBody');
+const productID = document.getElementById('productID');
+const editProductForm = document.getElementById('editProductForm');
+const closeModalButton = document.getElementById('closeModalButton');
+const editProductModal = document.getElementById('editProductModal');
+
+const showModal = id => {
+    editProductModal.showModal();
+
+    editProductForm.childNodes.forEach(child => {
+        const isChildInput = child.nodeType === 1;
+
+        if (isChildInput) {
+            getProducts().then(products => {
+                products.forEach(product => {
+                    Object.keys(product).forEach(key => {
+                        const isProductEditButton =
+                            child.name === key && id === product._id;
+
+                        if (isProductEditButton) {
+                            child.value = product[key];
+                            productID.innerText = product._id;
+                        }
+                    });
+                });
+            });
+        }
+    });
+};
+
 const closeModal = () => editProductModal.close();
 
 closeModalButton.addEventListener('click', closeModal);
@@ -31,20 +57,24 @@ const addNewProduct = async payload => {
     }
 };
 
-const getFormValues = () => {
+const getFormValues = form => {
     const payload = {
-        brand: addProductForm.brand.value,
-        name: addProductForm.productName.value,
-        imageUrl: addProductForm.imageUrl.value,
-        description: addProductForm.description.value,
-        price: Number(addProductForm.price.value),
+        brand: form.brand.value,
+        name: form.name.value,
+        imageUrl: form.imageUrl.value,
+        description: form.description.value,
+        price: Number(form.price.value),
     };
     return payload;
 };
 
-addProductForm.addEventListener('submit', async () => {
-    const payload = getFormValues();
+addProductForm.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    const payload = getFormValues(addProductForm);
     await addNewProduct(payload);
+
+    window.location.reload();
 });
 
 // PRODUCTS LIST
@@ -78,6 +108,16 @@ const editProduct = async (productID, payload) => {
     }
 };
 
+editProductForm.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    const id = productID.innerText;
+    const payload = getFormValues(editProductForm);
+
+    await editProduct(id, payload);
+    window.location.reload();
+});
+
 const deleteProduct = async productID => {
     try {
         const response = await fetch(`${PRODUCTS_API}/${productID}`, {
@@ -106,7 +146,9 @@ const generateTableRow = data => {
 
     const editButton = document.createElement('td');
     editButton.innerHTML = '<i class="bi bi-pen edit-btn"></i>';
-    editButton.addEventListener('click', showModal);
+    editButton.addEventListener('click', () => {
+        showModal(_id);
+    });
 
     const deleteButton = document.createElement('td');
     deleteButton.innerHTML = '<i class="bi bi-trash3 delete-btn"></i>';

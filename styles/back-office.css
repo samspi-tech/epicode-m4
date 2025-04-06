@@ -38,6 +38,17 @@ main {
     letter-spacing: -0.5px;
 }
 
+textarea {
+    resize: none;
+    height: 200px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
 .form-btn {
     color: #fff;
     border: none;
@@ -73,7 +84,8 @@ td:nth-of-type(3) {
 
 td:nth-of-type(6),
 td:nth-of-type(7) {
-    max-width: 30px;
+    width: 50px;
+    min-width: 30px;
     text-align: center;
 }
 
@@ -124,4 +136,15 @@ td:nth-of-type(7) {
 
     cursor: pointer;
     font-size: 26px;
+}
+
+#editProductForm label {
+    font-weight: 600;
+}
+
+#productID {
+    padding: 1px 3px;
+    font-weight: 600;
+    border-radius: 3px;
+    background-color: #dee2e6;
 }
