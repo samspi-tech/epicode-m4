@@ -20,6 +20,7 @@ const getProducts = async () => {
     try {
         const response = await fetch(PRODUCTS_API, {
             headers: {
+                'Content-Type': 'application/json',
                 Authorization: `Bearer ${ACCESS_TOKEN}`,
             },
         });
@@ -52,9 +53,9 @@ const generateCardCover = data => {
 
 const generateCardBody = data => {
     const {
+        _id: id,
         brand: productBrand,
         name: productName,
-        description: productDescription,
         price: productPrice,
     } = data;
 
@@ -69,15 +70,15 @@ const generateCardBody = data => {
     title.setAttribute('class', 'card-title my-1');
     title.innerText = productName;
 
-    const description = document.createElement('p');
-    description.setAttribute('class', 'card-text');
-    description.innerText = productDescription;
-
     const price = document.createElement('p');
     price.setAttribute('class', 'card-price');
     price.innerText = `${productPrice} €`;
 
-    cardBodyContainer.append(brand, title, description, price);
+    const details = document.createElement('a');
+    details.href = `./product-details.html?id=${id}`;
+    details.innerText = 'Details';
+
+    cardBodyContainer.append(brand, title, price, details);
     return cardBodyContainer;
 };
 
