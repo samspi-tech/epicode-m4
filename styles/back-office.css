@@ -63,6 +63,10 @@ input::-webkit-inner-spin-button {
     background-color: #343a40;
 }
 
+.support-form {
+    height: fit-content;
+}
+
 /* TABLE */
 table th {
     text-wrap: nowrap;
@@ -116,11 +120,11 @@ td:nth-of-type(7) {
 }
 
 /* MODAL EDIT PRODUCT */
-#editProductModal::backdrop {
+#modalContainer::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#editProductModal {
+#modalContainer {
     border: none;
     width: 500px;
     border-radius: 3px;

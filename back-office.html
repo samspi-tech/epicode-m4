@@ -67,15 +67,13 @@
         <!-- MAIN CONTENT -->
         <main class="container d-flex flex-column gap-5 py-5">
             <!-- FORM: ADD PRODUCT -->
-            <section class="row flex-column align-items-center">
-                <div class="col-6 bg-white pt-3 px-4">
+            <section class="row d-flex justify-content-around gy-5">
+                <div class="col-12 col-lg-5 bg-white py-3">
                     <h4 class="section-title mb-0">
                         Add new product to the shop
                     </h4>
                     <p>Every field is required</p>
-                </div>
-                <div class="col-6 bg-white pb-3 px-4">
-                    <form id="addProductForm" class="d-flex flex-wrap gap-3">
+                    <form id="addProductForm" class="d-flex flex-column gap-3">
                         <input
                             name="brand"
                             class="form-control"
@@ -106,6 +104,17 @@
                         </button>
                     </form>
                 </div>
+                <div class="col-12 col-lg-6 bg-white py-3 support-form">
+                    <h4 class="section-title">
+                        Having problems? Contact support.
+                    </h4>
+                    <form>
+                        <textarea
+                            class="form-control mb-2"
+                            placeholder="Issue details..."></textarea>
+                        <button type="submit" class="form-btn">Send</button>
+                    </form>
+                </div>
             </section>
             <!-- PRODUCTS TABLE -->
             <section class="row flex-column align-items-center">
@@ -114,7 +123,9 @@
                         List of products already available in the shop
                     </h4>
                 </div>
-                <div class="col-12 table-responsive bg-white">
+                <div
+                    id="tableContainer"
+                    class="col-12 table-responsive bg-white">
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -130,28 +141,33 @@
                         <tbody id="tableBodyContainer"></tbody>
                     </table>
                     <!-- SPINNER -->
-                    <div id="spinnerContainer" class="text-center py-5 d-none">
+                    <div
+                        id="tableSpinnerContainer"
+                        class="text-center py-5 d-none">
                         <div
                             class="spinner-border text-primary"
                             role="status"></div>
                     </div>
-                    <!-- ALERT -->
-                    <div
-                        id="alertContainer"
-                        class="alert alert-primary text-center d-none"
-                        role="alert"></div>
                 </div>
             </section>
             <!-- MODAL -->
-            <dialog id="editProductModal" class="position-relative">
+            <dialog id="modalContainer" class="position-relative">
                 <i id="closeModalButton" class="bi bi-x"></i>
                 <div class="row gy-3">
-                    <div class="col-12 bg-white">
+                    <div id="modalTitle" class="col-12 bg-white">
                         <h3 class="section-title mb-0">Edit product</h3>
                         <small>
                             Product ID:
                             <span id="productID"></span>
                         </small>
+                    </div>
+                    <!-- SPINNER -->
+                    <div
+                        id="modalSpinnerContainer"
+                        class="text-center py-5 d-none">
+                        <div
+                            class="spinner-border text-primary"
+                            role="status"></div>
                     </div>
                     <div class="col-12 bg-white">
                         <!-- FORM: EDIT PRODUCT -->
@@ -192,19 +208,7 @@
         <!-- FOOTER -->
         <footer class="container-fluid p-5 bg-secondary mt-auto">
             <div class="container">
-                <div class="row justify-content-center">
-                    <form class="col-6">
-                        <h4 class="text-white">
-                            Having problems? Contact support.
-                        </h4>
-                        <textarea
-                            class="form-control mb-2"
-                            placeholder="Issue details..."></textarea>
-                        <button type="submit" class="btn btn-warning">
-                            Send
-                        </button>
-                    </form>
-                </div>
+                <div class="row justify-content-center"></div>
             </div>
         </footer>
 

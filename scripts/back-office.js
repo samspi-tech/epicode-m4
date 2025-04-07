@@ -8,45 +8,64 @@ const productID = document.getElementById('productID');
 const addProductForm = document.getElementById('addProductForm');
 const editProductForm = document.getElementById('editProductForm');
 const closeModalButton = document.getElementById('closeModalButton');
-const editProductModal = document.getElementById('editProductModal');
+const editProductInputs = editProductForm.querySelectorAll('.form-control');
 
-const alertContainer = document.getElementById('alertContainer');
-const spinnerContainer = document.getElementById('spinnerContainer');
+const modalContainer = document.getElementById('modalContainer');
+const tableContainer = document.getElementById('tableContainer');
 const tableBodyContainer = document.getElementById('tableBodyContainer');
+const modalTitleContainer = document.getElementById('modalTitleContainer');
+const tableSpinnerContainer = document.getElementById('tableSpinnerContainer');
+const modalSpinnerContainer = document.getElementById('modalSpinnerContainer');
 
-const toggleSpinner = () => spinnerContainer.classList.toggle('d-none');
+const toggleSpinner = container => container.classList.toggle('d-none');
 
-const showAlertMessage = message => {
-    alertContainer.innerHTML = message;
-    alertContainer.classList.remove('d-none');
+const generateAlertContainer = () => {
+    const div = document.createElement('div');
+    div.role = 'alert';
+    div.setAttribute('class', 'alert alert-primary text-center mt-3');
+
+    return div;
 };
 
-// TODO Refactor this mess
-const showModal = id => {
-    editProductModal.showModal();
+const showAlertMessage = (appender, message) => {
+    const alertMessage = generateAlertContainer();
+    alertMessage.innerHTML = message;
+    appender.appendChild(alertMessage);
+};
 
-    editProductForm.childNodes.forEach(child => {
-        const isChildInput = child.nodeType === 1;
+const populateEditInputValues = async id => {
+    const inputs = Object.values(editProductInputs).map(input => input);
+    const [brand, name, image, description, price] = inputs;
 
-        if (isChildInput) {
-            getProducts().then(products => {
-                products.forEach(product => {
-                    Object.keys(product).forEach(key => {
-                        const isProductEditButton =
-                            child.name === key && id === product._id;
-
-                        if (isProductEditButton) {
-                            child.value = product[key];
-                            productID.innerText = product._id;
-                        }
-                    });
-                });
+    toggleSpinner(modalSpinnerContainer);
+    try {
+        await getProducts().then(products => {
+            products.forEach(product => {
+                if (id === product._id) {
+                    productID.innerText = product._id;
+                    brand.value = product.brand;
+                    name.value = product.name;
+                    image.value = product.imageUrl;
+                    description.value = product.description;
+                    price.value = product.price;
+                }
             });
-        }
-    });
+        });
+    } catch (error) {
+        modalTitleContainer.innerHTML = '';
+        const errorMessage = 'Error! Try later or contact support.';
+        showAlertMessage(modalTitleContainer, errorMessage);
+    } finally {
+        toggleSpinner(modalSpinnerContainer);
+    }
 };
 
-const closeModal = () => editProductModal.close();
+const showModal = id => {
+    modalContainer.showModal();
+    populateEditInputValues(id);
+};
+
+const closeModal = () => modalContainer.close();
 
 closeModalButton.addEventListener('click', closeModal);
 
@@ -89,7 +108,7 @@ addProductForm.addEventListener('submit', async event => {
 
 // PRODUCTS LIST
 const getProducts = async () => {
-    toggleSpinner();
+    toggleSpinner(tableSpinnerContainer);
     try {
         const response = await fetch(PRODUCTS_API, {
             headers: {
@@ -101,7 +120,7 @@ const getProducts = async () => {
     } catch (error) {
         console.error(error);
     } finally {
-        toggleSpinner();
+        toggleSpinner(tableSpinnerContainer);
     }
 };
 
@@ -176,4 +195,8 @@ const generateTableRow = data => {
 
 getProducts()
     .then(products => products.forEach(product => generateTableRow(product)))
-    .catch(err => showAlertMessage('Something went wrong.'));
+    .catch(err => {
+        const errorMessage = 'Error! Try later or contact support.';
+        showAlertMessage(tableContainer, errorMessage);
+        console.log(err);
+    });
