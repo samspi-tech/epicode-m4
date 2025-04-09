@@ -66,44 +66,60 @@
         </div>
         <!-- MAIN CONTENT -->
         <main class="container d-flex flex-column gap-5 py-5">
-            <!-- FORM: ADD PRODUCT -->
             <section class="row d-flex justify-content-around gy-5">
+                <!-- FORM: ADD PRODUCT -->
                 <div class="col-12 col-lg-5 bg-white py-3">
-                    <h4 class="section-title mb-0">
-                        Add new product to the shop
-                    </h4>
-                    <p>Every field is required</p>
+                    <h4 class="section-title">Add new product to the shop</h4>
                     <form id="addProductForm" class="d-flex flex-column gap-3">
-                        <input
-                            name="brand"
-                            class="form-control"
-                            type="text"
-                            placeholder="Product Brand" />
-                        <input
-                            name="name"
-                            class="form-control"
-                            type="text"
-                            placeholder="Product Name" />
-                        <input
-                            name="imageUrl"
-                            class="form-control"
-                            type="text"
-                            placeholder="Product Image (URL)" />
-                        <textarea
-                            name="description"
-                            class="form-control"
-                            placeholder="Product Description"></textarea>
-                        <input
-                            name="price"
-                            class="form-control"
-                            type="number"
-                            step=".01"
-                            placeholder="Product Price" />
-                        <button type="submit" class="form-btn align-self-start">
+                        <div>
+                            <input
+                                name="brand"
+                                class="form-control"
+                                type="text"
+                                placeholder="Product Brand" />
+                            <small class="input-error"></small>
+                        </div>
+                        <div>
+                            <input
+                                name="name"
+                                class="form-control"
+                                type="text"
+                                placeholder="Product Name" />
+                            <small class="input-error"></small>
+                        </div>
+                        <div>
+                            <input
+                                name="imageUrl"
+                                class="form-control"
+                                type="text"
+                                placeholder="Product Image (URL)" />
+                            <small class="input-error url"></small>
+                        </div>
+                        <div>
+                            <textarea
+                                name="description"
+                                class="form-control"
+                                placeholder="Product Description"></textarea>
+                            <small class="input-error"></small>
+                        </div>
+                        <div>
+                            <input
+                                name="price"
+                                class="form-control"
+                                type="number"
+                                step=".01"
+                                placeholder="Product Price" />
+                            <small class="input-error"></small>
+                        </div>
+                        <button
+                            id="addProductButton"
+                            type="submit"
+                            class="form-btn align-self-start">
                             Add product
                         </button>
                     </form>
                 </div>
+                <!-- CONTACT SUPPORT -->
                 <div class="col-12 col-lg-6 bg-white py-3 support-form">
                     <h4 class="section-title">
                         Having problems? Contact support.
@@ -219,6 +235,7 @@
             integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
             crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="./scripts/form-validation.js"></script>
         <script src="./scripts/back-office.js"></script>
     </body>
 </html>

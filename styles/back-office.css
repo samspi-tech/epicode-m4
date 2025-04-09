@@ -67,6 +67,15 @@ input::-webkit-inner-spin-button {
     height: fit-content;
 }
 
+.input-error {
+    color: #ff3860;
+}
+
+button:disabled,
+button:disabled:hover {
+    background-color: rgb(128, 128, 128, 0.5);
+}
+
 /* TABLE */
 table th {
     text-wrap: nowrap;

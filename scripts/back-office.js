@@ -5,7 +5,7 @@ const ACCESS_TOKEN =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2RmYzUzNmQyZWM1YzAwMTUzOTM4MGUiLCJpYXQiOjE3NDM2MTQ2MTYsImV4cCI6MTc0NDgyNDIxNn0.7n77yIzfN7AcDP7EsmembYT-UEcqHExS9W084_8ZYaw';
 
 const productID = document.getElementById('productID');
-const addProductForm = document.getElementById('addProductForm');
+// const addProductForm = document.getElementById('addProductForm');
 const editProductForm = document.getElementById('editProductForm');
 const closeModalButton = document.getElementById('closeModalButton');
 const editProductInputs = editProductForm.querySelectorAll('.form-control');
@@ -34,7 +34,7 @@ const showAlertMessage = (appender, message) => {
 };
 
 const populateEditInputValues = async id => {
-    const inputs = Object.values(editProductInputs).map(input => input);
+    const inputs = Object.values(editProductInputs);
     const [brand, name, image, description, price] = inputs;
 
     toggleSpinner(modalSpinnerContainer);
@@ -99,11 +99,14 @@ const getFormValues = form => {
 
 addProductForm.addEventListener('submit', async event => {
     event.preventDefault();
+    const validForm =
+        validateInputs() !== 'Required' && validateInputs() !== 'Invalid URL';
 
-    const payload = getFormValues(addProductForm);
-    await addNewProduct(payload);
-
-    window.location.reload();
+    if (validForm) {
+        const payload = getFormValues(addProductForm);
+        await addNewProduct(payload);
+        window.location.reload();
+    }
 });
 
 // PRODUCTS LIST
