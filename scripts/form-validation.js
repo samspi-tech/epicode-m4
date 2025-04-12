@@ -1,42 +1,14 @@
 'use strict';
 
-const forms = document.querySelectorAll('form');
 const errorMessage = document.querySelectorAll('.input-error');
 const addProductForm = document.getElementById('addProductForm');
-const addProductButton = document.getElementById('addProductButton');
 const addProductInputs = addProductForm.querySelectorAll('.form-control');
 
-const [, , image] = addProductInputs;
-// const [brand, productName, , description, price] = addProductInputs;
-const textInput = Object.values(addProductInputs).filter(input => {
-    return input.name !== 'imageUrl';
-});
+const textInput = Object.values(addProductInputs);
+const textInputMessage = Object.values(errorMessage);
 
-const [, , imageMessage] = errorMessage;
-const textInputMessage = Object.values(errorMessage).filter(input => {
-    return input.className !== 'input-error url';
-});
-
-// const checkInputValue = (input, button) => {
-//     const inputValue = input.value.trim();
-
-//     return !inputValue
-//         ? button.setAttribute('disabled', '')
-//         : button.removeAttribute('disabled');
-// };
-
-// forms.forEach(form => {
-//     const button = form.querySelector('button');
-//     button.setAttribute('disabled', '');
-
-//     const inputs = form.querySelectorAll('.form-control');
-
-//     inputs.forEach(input => {
-//         form.addEventListener('input', () => {
-//             checkInputValue(input, button);
-//         });
-//     });
-// });
+const [, , imageInput] = Object.values(addProductInputs);
+const [, , imageMessage] = Object.values(errorMessage);
 
 const isValidUrl = url => {
     const pattern = new RegExp(
@@ -53,22 +25,27 @@ const isValidUrl = url => {
 
 const isInputValueEmpty = input => input.value.trim() === '';
 
-const validateInputs = () => {
-    const imageValue = image.value.trim();
-    const valid = '<i class="bi bi-check-circle-fill"></i>';
+const checkInputValue = () =>
+    textInputMessage.map((inputMessage, i) => {
+        const iconValid = '<i class="bi bi-check-circle-fill"></i>';
 
-    textInputMessage.forEach((message, i) => {
-        return isInputValueEmpty(textInput[i])
-            ? (message.innerHTML = 'Required')
-            : (message.innerHTML = `${valid}`);
+        isInputValueEmpty(textInput[i])
+            ? (inputMessage.innerHTML = 'Required')
+            : (inputMessage.innerHTML = iconValid);
+
+        return isInputValueEmpty(textInput[i]);
     });
 
+const validateInputs = () => {
+    checkInputValue();
+
     switch (true) {
-        case imageValue === '':
-            return (imageMessage.innerHTML = 'Required');
-        case !isValidUrl(imageValue):
-            return (imageMessage.innerHTML = 'Invalid URL');
+        case !isValidUrl(imageInput.value):
+            imageMessage.innerHTML = 'Invalid URL';
+            return false;
+        case checkInputValue().includes(true):
+            return false;
         default:
-            return (imageMessage.innerHTML = `${valid}`);
+            return true;
     }
 };

@@ -99,10 +99,9 @@ const getFormValues = form => {
 
 addProductForm.addEventListener('submit', async event => {
     event.preventDefault();
-    const validForm =
-        validateInputs() !== 'Required' && validateInputs() !== 'Invalid URL';
+    const isValidForm = validateInputs();
 
-    if (validForm) {
+    if (isValidForm) {
         const payload = getFormValues(addProductForm);
         await addNewProduct(payload);
         window.location.reload();
