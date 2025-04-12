@@ -66,19 +66,24 @@ const generateCardBody = data => {
     brand.setAttribute('class', 'card-brand text-secondary');
     brand.innerText = productBrand;
 
-    const title = document.createElement('h4');
-    title.setAttribute('class', 'card-title my-1');
+    const title = document.createElement('h3');
+    title.setAttribute('class', 'card-title mt-1 mb-3');
     title.innerText = productName;
 
+    const cardFooter = document.createElement('div');
+    cardFooter.setAttribute('class', 'd-flex align-items-center gap-1');
+
     const price = document.createElement('p');
-    price.setAttribute('class', 'card-price');
+    price.setAttribute('class', 'card-price mb-0');
     price.innerText = `${productPrice} €`;
 
     const details = document.createElement('a');
+    details.setAttribute('class', 'card-details');
     details.href = `./product-details.html?id=${id}`;
     details.innerText = 'Details';
 
-    cardBodyContainer.append(brand, title, price, details);
+    cardFooter.append(price, details);
+    cardBodyContainer.append(brand, title, cardFooter);
     return cardBodyContainer;
 };
 

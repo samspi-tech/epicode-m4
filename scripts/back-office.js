@@ -50,7 +50,7 @@ const populateEditInputValues = async id => {
         });
     } catch (error) {
         modalTitleContainer.innerHTML = '';
-        const errorMessage = 'Error! Try later or contact support.';
+        const errorMessage = 'Error! Try again later or contact support.';
         showAlertMessage(modalTitleContainer, errorMessage);
     } finally {
         toggleSpinner(modalSpinnerContainer);
@@ -62,7 +62,10 @@ const showModal = id => {
     populateEditInputValues(id);
 };
 
-const closeModal = () => modalContainer.close();
+const closeModal = () => {
+    modalContainer.close();
+    window.location.reload();
+};
 
 closeModalButton.addEventListener('click', closeModal);
 
@@ -101,7 +104,11 @@ addProductForm.addEventListener('submit', async event => {
     if (isValidForm) {
         const payload = getFormValues(addProductForm);
         await addNewProduct(payload);
-        window.location.reload();
+
+        appendNewProduct();
+        showSuccess(addProductSuccess);
+        setTimeout(() => hideSuccess(addProductSuccess), 4000);
+        resetFormInputs(payload, addProductForm, addFormMessage);
     }
 });
 
@@ -148,7 +155,9 @@ editProductForm.addEventListener('submit', async event => {
         const payload = getFormValues(editProductForm);
 
         await editProduct(id, payload);
-        window.location.reload();
+
+        showSuccess(editProductSuccess);
+        setTimeout(() => hideSuccess(editProductSuccess), 1500);
     }
 });
 
@@ -198,7 +207,6 @@ const generateTableRow = data => {
 getProducts()
     .then(products => products.forEach(product => generateTableRow(product)))
     .catch(err => {
-        const errorMessage = 'Error! Try later or contact support.';
+        const errorMessage = 'Error! Try again later or contact support.';
         showAlertMessage(tableContainer, errorMessage);
-        console.log(err);
     });

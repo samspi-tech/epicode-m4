@@ -14,7 +14,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
             rel="stylesheet" />
         <link rel="stylesheet" href="./styles/product-details.css" />
         <title>Marketplace - Compito di fine modulo</title>
@@ -23,7 +23,7 @@
         <div class="container-fluid bg-warning py-1 sticky-top shadow-sm">
             <div class="row">
                 <div class="col">
-                    <p class="text-center mb-0">
+                    <p class="top-banner text-center mb-0">
                         You are currently logged in as
                         <span class="user-role">Shop Manager</span>.
                     </p>
@@ -31,50 +31,30 @@
             </div>
         </div>
         <!-- NAVBAR -->
-        <nav class="container py-2">
-            <div class="row align-items-center">
-                <ul class="col-4 list-unstyled d-flex gap-4 mb-0">
-                    <li>
-                        <a class="text-decoration-none" href="./index.html"
-                            >HOME</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            class="text-decoration-none"
-                            href="./back-office.html"
-                            >ADD ITEMS</a
-                        >
-                    </li>
-                </ul>
-                <div class="col-4 text-center">
-                    <img
-                        src="./assets/logo.png"
-                        alt="Marketplace logo"
-                        class="img-fluid rounded shadow"
-                        width="100" />
+        <div class="container-fluid bg-white shadow-sm">
+            <nav class="container py-4">
+                <div class="row align-items-center">
+                    <ul class="d-none d-md-flex col-4 list-unstyled gap-4 mb-0">
+                        <li>
+                            <a class="text-decoration-none" href="./index.html"
+                                >HOME</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                class="text-decoration-none"
+                                href="./back-office.html"
+                                >ADD ITEMS</a
+                            >
+                        </li>
+                    </ul>
+                    <div class="col-4 text-center">
+                        <h2 class="display-6 fw-bold">Marketplace.</h2>
+                    </div>
+                    <div
+                        class="col-4 d-flex justify-content-end gap-4 fs-5"></div>
                 </div>
-                <div class="col-4 d-flex justify-content-end gap-4 fs-5">
-                    <i class="bi bi-search"></i>
-                    <i class="bi bi-bag"></i>
-                </div>
-            </div>
-        </nav>
-        <!-- JUMBOTRON -->
-        <div class="container-fluid jumbotron p-5 mb-4">
-            <div class="container d-flex flex-column gap-3 py-5">
-                <h1 class="display-1 fw-bold text-white">
-                    Welcome to your favorite Marketplace.
-                </h1>
-                <p class="text-white fs-4">
-                    A whole world of amazing products to discover and buy from
-                    your comfy home!
-                </p>
-                <button class="hero-btn align-self-start shadow" type="button">
-                    About us<i
-                        class="bi bi-arrow-right-circle-fill fs-4 ms-3"></i>
-                </button>
-            </div>
+            </nav>
         </div>
         <!-- MAIN CONTENT -->
         <main class="container py-5">
@@ -85,62 +65,59 @@
             <!-- ALERT -->
             <div
                 id="alertContainer"
-                class="alert alert-warning text-center d-none"
+                class="alert alert-warning text-center d-none p-5"
                 role="alert"></div>
             <!-- PRODUCT -->
-            <div id="productContainer" class="row py-5 gx-5"></div>
+            <div id="productContainer" class="row py-lg-5"></div>
         </main>
         <!-- FOOTER -->
-        <footer class="container-fluid p-5 bg-secondary mt-auto">
+        <footer class="container-fluid p-5 mt-auto">
             <div class="container">
                 <div class="row gy-5">
-                    <div class="d-none d-md-block col-md-3">
-                        <img
-                            src="./assets/logo.png"
-                            alt="Marketplace logo"
-                            class="img-fluid rounded shadow"
-                            width="300" />
+                    <div class="d-none d-lg-block col-5 col-xl-3">
+                        <h2 class="footer-logo position-relative">
+                            M.<span>&trade;</span>
+                        </h2>
                     </div>
-                    <div
-                        class="col-12 col-md-5 d-flex justify-content-around gap-5">
-                        <ul class="list-unstyled d-flex flex-column gap-2">
-                            <li class="list-title">Information</li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Return</a></li>
-                            <li><a href="#">Contacts</a></li>
-                            <li><a href="#">Information</a></li>
-                            <li><a href="#">Gift Vouchers</a></li>
+                    <ul
+                        class="col-12 col-md-6 col-lg-3 col-xl-2 list-unstyled d-flex flex-column gap-2">
+                        <li class="list-title">Information</li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Return</a></li>
+                        <li><a href="#">Contacts</a></li>
+                        <li><a href="#">Information</a></li>
+                        <li><a href="#">Gift Vouchers</a></li>
+                    </ul>
+                    <ul
+                        class="col-12 col-md-6 col-lg-4 col-xl-3 list-unstyled d-flex flex-column">
+                        <li class="list-title">Customer service</li>
+                        <li class="list-subtitle mt-2">Infoline:</li>
+                        <ul class="list-unstyled mb-3">
+                            <li>+39 123 456 789</li>
+                            <li>Mon.-Fri.: 10:00-17:00</li>
                         </ul>
-                        <ul class="list-unstyled d-flex flex-column">
-                            <li class="list-title">Customer service</li>
-                            <li class="list-subtitle mt-2">Infoline:</li>
-                            <ul class="list-unstyled mb-3">
-                                <li>+39 123 456 789</li>
-                                <li>Mon.-Fri.: 10:00-17:00</li>
-                            </ul>
-                            <li class="list-subtitle mt-2">E-mail address:</li>
-                            <ul class="list-unstyled mb-3">
-                                <li>marketplace@marketplace.com</li>
-                            </ul>
-                            <li class="list-subtitle mt-2">Location:</li>
-                            <ul class="list-unstyled mb-3">
-                                <li>Planet Earth</li>
-                            </ul>
+                        <li class="list-subtitle mt-2">E-mail address:</li>
+                        <ul class="list-unstyled mb-3">
+                            <li>marketplace@marketplace.com</li>
                         </ul>
-                    </div>
-                    <form class="col-12 col-md-4 text-white">
+                        <li class="list-subtitle mt-2">Location:</li>
+                        <ul class="list-unstyled mb-3">
+                            <li>Planet Earth</li>
+                        </ul>
+                    </ul>
+                    <form class="col-12 col-xl-4">
                         <h6 class="list-title mt-1 mb-0">
                             Subscribe to our newsletter
                         </h6>
                         <p>Be first in line when we release new products.</p>
                         <div
-                            class="d-flex flex-column gap-1 bg-white py-3 px-2 rounded">
+                            class="d-flex flex-column gap-1 bg-white py-3 px-2 rounded shadow">
                             <input
                                 class="form-control py-2"
                                 type="email"
                                 placeholder="Enter your email" />
-                            <button class="btn btn-warning py-2">
+                            <button class="subscribe-btn">
                                 <i class="bi bi-arrow-return-right"></i>
                             </button>
                         </div>

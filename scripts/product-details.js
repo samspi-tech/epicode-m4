@@ -39,7 +39,7 @@ const generateProductCover = data => {
     const { imageUrl: productImage, name: productName } = data;
 
     const col = document.createElement('div');
-    col.setAttribute('class', 'col-4');
+    col.setAttribute('class', 'col-12 col-md-4 cover-container py-3');
 
     const image = document.createElement('img');
     image.setAttribute('class', 'img-fluid rounded');
@@ -59,7 +59,7 @@ const generateProductDetails = data => {
     } = data;
 
     const col = document.createElement('div');
-    col.setAttribute('class', 'col-8 d-flex flex-column');
+    col.setAttribute('class', 'col-12 col-md-8 d-flex flex-column p-3');
 
     const brand = document.createElement('h6');
     brand.setAttribute('class', 'text-secondary text-uppercase');
@@ -79,7 +79,7 @@ const generateProductDetails = data => {
 
     const homePage = document.createElement('a');
     homePage.setAttribute('class', 'home-page-link');
-    homePage.innerText = 'Click here to see more products.';
+    homePage.innerText = 'Take me back';
     homePage.href = './index.html';
 
     col.append(brand, title, description, price, homePage);
@@ -95,4 +95,4 @@ const generateProductCard = data => {
 
 getProduct()
     .then(product => generateProductCard(product))
-    .catch(err => showAlertMessage('Something went wrong!'));
+    .catch(err => showAlertMessage('Something went wrong! Try again later.'));

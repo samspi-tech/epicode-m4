@@ -1,31 +1,54 @@
 body {
     color: #222222;
     background-color: #e7f5ff;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* NAVBAR */
-nav a {
-    color: #776c65;
+.top-banner {
+    font-size: 14px;
 }
 
 .user-role {
-    font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
 }
 
+/* NAVBAR */
+nav a {
+    color: #222222;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+
+    transition: all 100ms ease-in-out;
+}
+
+nav a:hover {
+    color: #3b3b3b;
+    transform: translateY(2px);
+}
+
+nav a:active {
+    color: #545454;
+}
+
 /* JUMBOTRON */
 .jumbotron {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
         url('https://images.unsplash.com/photo-1646215993316-c98f642303ce?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    min-height: 570px;
 }
 
 h1 {
+    letter-spacing: 2.5px;
     text-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+h1,
+h2 {
     font-family: 'DM Serif Display', sans-serif;
 }
 
@@ -64,6 +87,7 @@ input::-webkit-inner-spin-button {
 }
 
 .support-form {
+    top: 700px;
     height: fit-content;
 }
 
@@ -71,12 +95,52 @@ input::-webkit-inner-spin-button {
     color: #ff3860;
 }
 
-button:disabled,
-button:disabled:hover {
-    background-color: rgb(128, 128, 128, 0.5);
+.show-add-success {
+    animation: addProductShow 200ms linear;
+}
+
+@keyframes addProductShow {
+    from {
+        opacity: 0;
+        font-size: 20px;
+    }
+    to {
+        opacity: 1;
+        font-size: 16px;
+    }
+}
+
+.hide-add-success {
+    animation: addProductHide 400ms linear forwards;
+}
+
+@keyframes addProductHide {
+    0% {
+        visibility: visible;
+        transform: translateX(0);
+    }
+    40% {
+        transform: translateX(-30px);
+    }
+    74% {
+        opacity: 1;
+        transform: translateX(-40px);
+    }
+    90% {
+        transform: translateX(100px);
+    }
+    100% {
+        transform: translateX(200px);
+        visibility: hidden;
+        opacity: 0;
+    }
 }
 
 /* TABLE */
+tbody tr {
+    height: 80px;
+}
+
 table th {
     text-wrap: nowrap;
 }
@@ -159,4 +223,9 @@ td:nth-of-type(7) {
     font-weight: 600;
     border-radius: 3px;
     background-color: #dee2e6;
+}
+
+/* FOOTER */
+footer {
+    background-color: #e6e6e6;
 }

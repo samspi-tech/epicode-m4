@@ -19,7 +19,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
             rel="stylesheet" />
         <link rel="stylesheet" href="./styles/back-office.css" />
         <title>Marketplace - Compito di fine modulo</title>
@@ -28,7 +28,7 @@
         <div class="container-fluid bg-info py-1 sticky-top shadow-sm">
             <div class="row">
                 <div class="col">
-                    <p class="text-center mb-0">
+                    <p class="top-banner text-center mb-0">
                         You are currently logged in as
                         <span class="user-role">Shop Manager</span>.
                     </p>
@@ -36,37 +36,37 @@
             </div>
         </div>
         <!-- NAVBAR -->
-        <nav class="container py-2">
+        <nav class="container py-4">
             <div class="row align-items-center">
-                <ul class="col-4 list-unstyled d-flex gap-4 mb-0">
+                <ul class="d-none d-md-flex col-4 list-unstyled gap-4 mb-0">
                     <li>
                         <a class="text-decoration-none" href="./index.html"
-                            >SHOP</a
+                            >HOME</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="text-decoration-none"
+                            href="./back-office.html"
+                            >ADD ITEMS</a
                         >
                     </li>
                 </ul>
                 <div class="col-4 text-center">
-                    <img
-                        src="./assets/logo.png"
-                        alt="Marketplace logo"
-                        class="img-fluid rounded shadow"
-                        width="100" />
+                    <h2 class="display-6 fw-bold">Marketplace.</h2>
                 </div>
-                <div class="col-4 d-flex justify-content-end gap-4 fs-5">
-                    <i class="bi bi-search"></i>
-                    <i class="bi bi-bag"></i>
-                </div>
+                <div class="col-4 d-flex justify-content-end gap-4 fs-5"></div>
             </div>
         </nav>
         <!-- JUMBOTRON -->
-        <div class="jumbotron p-5">
-            <div class="container-fluid text-center py-5">
+        <div class="jumbotron d-flex justify-content-center align-items-center">
+            <div class="container-fluid text-center">
                 <h1 class="display-1 fw-bold text-white">Back Office</h1>
             </div>
         </div>
         <!-- MAIN CONTENT -->
         <main class="container d-flex flex-column gap-5 py-5">
-            <section class="row d-flex justify-content-around gy-5">
+            <section class="row d-flex justify-content-between gy-5">
                 <!-- FORM: ADD PRODUCT -->
                 <div class="col-12 col-lg-5 bg-white py-3">
                     <h4 class="section-title">Add new product to the shop</h4>
@@ -111,16 +111,25 @@
                                 placeholder="Product Price" />
                             <small class="input-error"></small>
                         </div>
-                        <button
-                            id="addProductButton"
-                            type="submit"
-                            class="form-btn align-self-start">
-                            Add product
-                        </button>
+                        <div class="d-flex align-items-center overflow-hidden">
+                            <button
+                                id="addProductButton"
+                                type="submit"
+                                class="form-btn align-self-start text-nowrap">
+                                Add product
+                            </button>
+                            <small
+                                id="addProductSuccess"
+                                class="text-nowrap ms-auto me-1 visually-hidden"
+                                ><i class="bi bi-check2-circle"></i
+                                >&nbsp;Product added successfully!</small
+                            >
+                        </div>
                     </form>
                 </div>
                 <!-- CONTACT SUPPORT -->
-                <div class="col-12 col-lg-6 bg-white py-3 support-form">
+                <div
+                    class="col-12 col-lg-6 bg-white py-3 support-form sticky-top">
                     <h4 class="section-title">
                         Having problems? Contact support.
                     </h4>
@@ -228,16 +237,27 @@
                                     type="number"
                                     step=".01" />
                             </div>
-                            <button type="submit" class="form-btn">
-                                Save changes
-                            </button>
+                            <div
+                                class="d-flex align-items-center overflow-hidden">
+                                <button
+                                    type="submit"
+                                    class="form-btn align-self-start">
+                                    Save changes
+                                </button>
+                                <small
+                                    id="editProductSuccess"
+                                    class="text-nowrap ms-auto mb-0 me-1 visually-hidden">
+                                    <i class="bi bi-check2-circle"></i
+                                    >&nbsp;Product edited!
+                                </small>
+                            </div>
                         </form>
                     </div>
                 </div>
             </dialog>
         </main>
         <!-- FOOTER -->
-        <footer class="container-fluid p-5 bg-secondary mt-auto">
+        <footer class="container-fluid p-5 mt-auto">
             <div class="container">
                 <div class="row justify-content-center"></div>
             </div>
