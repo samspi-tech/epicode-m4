@@ -5,10 +5,7 @@ const ACCESS_TOKEN =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2RmYzUzNmQyZWM1YzAwMTUzOTM4MGUiLCJpYXQiOjE3NDM2MTQ2MTYsImV4cCI6MTc0NDgyNDIxNn0.7n77yIzfN7AcDP7EsmembYT-UEcqHExS9W084_8ZYaw';
 
 const productID = document.getElementById('productID');
-// const addProductForm = document.getElementById('addProductForm');
-const editProductForm = document.getElementById('editProductForm');
 const closeModalButton = document.getElementById('closeModalButton');
-const editProductInputs = editProductForm.querySelectorAll('.form-control');
 
 const modalContainer = document.getElementById('modalContainer');
 const tableContainer = document.getElementById('tableContainer');
@@ -99,7 +96,7 @@ const getFormValues = form => {
 
 addProductForm.addEventListener('submit', async event => {
     event.preventDefault();
-    const isValidForm = validateInputs();
+    const isValidForm = validateInputs(addProductInputs, addFormMessage);
 
     if (isValidForm) {
         const payload = getFormValues(addProductForm);
@@ -144,12 +141,15 @@ const editProduct = async (productID, payload) => {
 
 editProductForm.addEventListener('submit', async event => {
     event.preventDefault();
+    const isValidForm = validateInputs(editProductInputs, editFormMessage);
 
-    const id = productID.innerText;
-    const payload = getFormValues(editProductForm);
+    if (isValidForm) {
+        const id = productID.innerText;
+        const payload = getFormValues(editProductForm);
 
-    await editProduct(id, payload);
-    window.location.reload();
+        await editProduct(id, payload);
+        window.location.reload();
+    }
 });
 
 const deleteProduct = async productID => {

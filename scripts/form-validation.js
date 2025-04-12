@@ -1,14 +1,27 @@
 'use strict';
 
-const errorMessage = document.querySelectorAll('.input-error');
 const addProductForm = document.getElementById('addProductForm');
+const addFormMessage = addProductForm.querySelectorAll('.input-error');
 const addProductInputs = addProductForm.querySelectorAll('.form-control');
 
-const textInput = Object.values(addProductInputs);
-const textInputMessage = Object.values(errorMessage);
+const editProductForm = document.getElementById('editProductForm');
+const editFormMessage = editProductForm.querySelectorAll('.input-error');
+const editProductInputs = editProductForm.querySelectorAll('.form-control');
 
-const [, , imageInput] = Object.values(addProductInputs);
-const [, , imageMessage] = Object.values(errorMessage);
+const getInputs = inputs => Object.values(inputs);
+const getInputsMessage = inputMessages => Object.values(inputMessages);
+
+const getImageInput = inputs => {
+    const [, , imageInput] = Object.values(inputs);
+
+    return imageInput;
+};
+
+const getImageMessage = inputMessages => {
+    const [, , imageMessage] = Object.values(inputMessages);
+
+    return imageMessage;
+};
 
 const isValidUrl = url => {
     const pattern = new RegExp(
@@ -25,25 +38,28 @@ const isValidUrl = url => {
 
 const isInputValueEmpty = input => input.value.trim() === '';
 
-const checkInputValue = () =>
-    textInputMessage.map((inputMessage, i) => {
+const checkForEmptyValue = (inputs, messages) =>
+    getInputsMessage(messages).map((message, i) => {
+        const input = getInputs(inputs);
         const iconValid = '<i class="bi bi-check-circle-fill"></i>';
 
-        isInputValueEmpty(textInput[i])
-            ? (inputMessage.innerHTML = 'Required')
-            : (inputMessage.innerHTML = iconValid);
+        isInputValueEmpty(input[i])
+            ? (message.innerHTML = 'Required')
+            : (message.innerHTML = iconValid);
 
-        return isInputValueEmpty(textInput[i]);
+        return isInputValueEmpty(input[i]);
     });
 
-const validateInputs = () => {
-    checkInputValue();
+const validateInputs = (inputs, messages) => {
+    checkForEmptyValue(inputs, messages);
+    const imageInput = getImageInput(inputs);
+    const imageMessage = getImageMessage(messages);
 
     switch (true) {
         case !isValidUrl(imageInput.value):
             imageMessage.innerHTML = 'Invalid URL';
             return false;
-        case checkInputValue().includes(true):
+        case checkForEmptyValue(inputs, messages).includes(true):
             return false;
         default:
             return true;

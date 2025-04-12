@@ -188,31 +188,46 @@
                     <div class="col-12 bg-white">
                         <!-- FORM: EDIT PRODUCT -->
                         <form id="editProductForm" class="d-flex flex-column">
-                            <label>Product Brand</label>
-                            <input
-                                name="brand"
-                                class="form-control mb-3"
-                                type="text" />
-                            <label>Product Name</label>
-                            <input
-                                name="name"
-                                class="form-control mb-3"
-                                type="text" />
-                            <label>Product Image (URL)</label>
-                            <input
-                                name="imageUrl"
-                                class="form-control mb-3"
-                                type="text" />
-                            <label>Product Description</label>
-                            <textarea
-                                name="description"
-                                class="form-control mb-3"></textarea>
-                            <label>Product Price</label>
-                            <input
-                                name="price"
-                                class="form-control mb-3"
-                                type="number"
-                                step=".01" />
+                            <div class="mb-3">
+                                <label>Product Brand</label>&nbsp;
+                                <small class="input-error"></small>
+                                <input
+                                    name="brand"
+                                    class="form-control"
+                                    type="text" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Product Name</label>&nbsp;
+                                <small class="input-error"></small>
+                                <input
+                                    name="name"
+                                    class="form-control"
+                                    type="text" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Product Image (URL)</label>&nbsp;
+                                <small class="input-error"></small>
+                                <input
+                                    name="imageUrl"
+                                    class="form-control"
+                                    type="text" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Product Description</label>&nbsp;
+                                <small class="input-error"></small>
+                                <textarea
+                                    name="description"
+                                    class="form-control"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label>Product Price</label>&nbsp;
+                                <small class="input-error"></small>
+                                <input
+                                    name="price"
+                                    class="form-control"
+                                    type="number"
+                                    step=".01" />
+                            </div>
                             <button type="submit" class="form-btn">
                                 Save changes
                             </button>
