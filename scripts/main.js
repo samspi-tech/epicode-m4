@@ -47,6 +47,11 @@ const generateCardCover = data => {
     button.setAttribute('class', 'card-btn');
     button.innerText = 'Add to cart';
 
+    button.addEventListener('click', () => {
+        cartBadge.innerText++;
+        addProductToLocalStorage(data);
+    });
+
     cardCoverContainer.append(image, button);
     return cardCoverContainer;
 };

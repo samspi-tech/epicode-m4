@@ -20,6 +20,7 @@
             href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
             rel="stylesheet" />
         <link rel="stylesheet" href="./styles/swiper.css" />
+        <link rel="stylesheet" href="./styles/cart.css" />
         <link rel="stylesheet" href="./styles/main.css" />
         <title>Marketplace - Compito di fine modulo</title>
     </head>
@@ -54,9 +55,37 @@
                 <div class="col-4 text-center">
                     <h2 class="display-6 fw-bold">Marketplace.</h2>
                 </div>
-                <div class="col-4 d-flex justify-content-end gap-4 fs-5"></div>
+                <div class="col-4 d-flex justify-content-end gap-4 fs-5">
+                    <div class="position-relative">
+                        <i id="openCartButton" class="bi bi-bag cart-icon"></i>
+                        <span id="cartBadge" class="badge text-black">0</span>
+                    </div>
+                </div>
             </div>
         </nav>
+        <!-- CART -->
+        <dialog id="cartContainer" class="position-relative">
+            <i id="closeCartButton" class="bi bi-x-lg"></i>
+            <div class="d-flex flex-column h-100">
+                <div class="cart-header">
+                    <h4 id="cartMessage" class="text-center">
+                        Your cart is empty
+                    </h4>
+                </div>
+                <div class="p-3">
+                    <ul id="cartProductsContainer"></ul>
+                </div>
+                <div
+                    class="d-flex justify-content-between align-items-end mt-auto p-3">
+                    <button id="clearCartButton" class="btn btn-danger">
+                        Clear cart
+                    </button>
+                    <h6 class="mb-0">
+                        Your total is: <span id="cartCheckout">0</span>€
+                    </h6>
+                </div>
+            </div>
+        </dialog>
         <!-- JUMBOTRON -->
         <div class="container-fluid jumbotron p-5 mb-4">
             <div class="container d-flex flex-column gap-3 py-5">
@@ -164,6 +193,7 @@
             crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="./scripts/swiper.js"></script>
+        <script src="./scripts/cart.js"></script>
         <script src="./scripts/main.js"></script>
     </body>
 </html>
