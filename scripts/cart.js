@@ -1,11 +1,12 @@
 'use strict';
 
-const cartBadge = document.getElementById('cartBadge');
 const cartMessage = document.getElementById('cartMessage');
 const cartCheckout = document.getElementById('cartCheckout');
-const openCartButton = document.getElementById('openCartButton');
 const closeCartButton = document.getElementById('closeCartButton');
 const clearCartButton = document.getElementById('clearCartButton');
+
+const cartBadges = document.querySelectorAll('.cart-badge');
+const openCartButtons = document.querySelectorAll('.open-cart-btn');
 
 const cartContainer = document.getElementById('cartContainer');
 const cartProductsContainer = document.getElementById('cartProductsContainer');
@@ -15,7 +16,7 @@ const showCart = () => {
     appendProductToCart();
     cartContainer.showModal();
 };
-openCartButton.addEventListener('click', showCart);
+openCartButtons.forEach(btn => btn.addEventListener('click', showCart));
 
 const hideCart = () => cartContainer.close();
 closeCartButton.addEventListener('click', hideCart);
@@ -82,10 +83,9 @@ const updateCartMessages = () => {
     const products = getLocalStorage('cart') ?? [];
     const plural = products.length > 1 ? 'items' : 'item';
 
-    const checkout = products.reduce((acc, product) => {
-        const curr = product.price;
-        return acc + curr;
-    }, 0);
+    const checkout = products
+        .reduce((acc, product) => acc + product.price, 0)
+        .toFixed(2);
 
     const message =
         products.length > 0
@@ -94,17 +94,17 @@ const updateCartMessages = () => {
 
     cartMessage.innerText = message;
     cartCheckout.innerText = checkout;
-    cartBadge.innerText = products.length;
+    cartBadges.forEach(badge => (badge.innerText = products.length));
 };
 
 updateCartMessages();
 
 const clearCart = () => {
     localStorage.clear();
-    cartBadge.innerText = 0;
-    cartCheckout.innerText = 0;
+    cartCheckout.innerText = '0.00';
     cartProductsContainer.innerHTML = '';
     cartMessage.innerText = 'Your cart is empty';
+    cartBadges.forEach(badge => (badge.innerText = 0));
 };
 clearCartButton.addEventListener('click', clearCart);
 

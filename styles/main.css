@@ -10,6 +10,7 @@ body {
 
 .top-banner {
     font-size: 14px;
+    z-index: 9999999999;
 }
 
 .user-role {

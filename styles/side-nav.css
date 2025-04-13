@@ -1,0 +1,36 @@
+#burgerButton {
+    padding: 0 8px;
+    font-size: 28px;
+    border-radius: 3px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+
+    z-index: 20;
+    position: static;
+}
+
+#sideNavbar {
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+    height: 100vh;
+    z-index: 99999;
+    padding-top: 60px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+
+    transition: all 300ms linear;
+}
+
+.hide-side-nav {
+    transform: translateX(-150%);
+}
+
+#closeSideNavButton {
+    color: #000;
+    font-size: 24px;
+    text-align: end;
+    padding-right: 15px;
+
+    transition: all 500ms linear 350ms;
+}

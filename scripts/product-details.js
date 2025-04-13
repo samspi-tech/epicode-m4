@@ -77,12 +77,26 @@ const generateProductDetails = data => {
     price.setAttribute('class', 'fw-bold mt-auto');
     price.innerText = `${productPrice} €`;
 
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.setAttribute('class', 'btns-container');
+
+    const addToCartButton = document.createElement('button');
+    addToCartButton.setAttribute('class', 'add-to-cart-btn');
+    addToCartButton.innerHTML = 'Add to cart';
+
+    addToCartButton.addEventListener('click', () => {
+        cartBadges.forEach(badge => badge.innerText++);
+        addProductToLocalStorage(data);
+    });
+
     const homePage = document.createElement('a');
     homePage.setAttribute('class', 'home-page-link');
     homePage.innerText = 'Take me back';
     homePage.href = './index.html';
 
-    col.append(brand, title, description, price, homePage);
+    buttonsContainer.append(addToCartButton, homePage);
+
+    col.append(brand, title, description, price, buttonsContainer);
     return col;
 };
 
